@@ -1,0 +1,524 @@
+﻿python : D:\finpixe\A
+i_Accounting_v1-3\Ai_
+Accounting_v1\backend
+\core\ai_proxy.py:11:
+ FutureWarning: 
+At line:1 char:1
++ python manage.py 
+migrate 2>&1 | 
+Out-File -Encoding 
+UTF8 migrate_error 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (D:\finp   
+ ixe\Ai_A...Futur    
+eWarning: :Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+All support for the `
+google.generativeai` 
+package has ended. 
+It will no longer be 
+receiving 
+updates or bug 
+fixes. Please switch 
+to the 
+`google.genai` 
+package as soon as 
+possible.
+See README for more 
+details:
+
+https://github.com/go
+ogle-gemini/deprecate
+d-generative-ai-pytho
+n/blob/main/README.md
+
+  import 
+google.generativeai 
+as genai
+[OK] Database connected successfully!
+Operations to perform:
+  Apply all migrations: accounting, admin, auth, contenttypes, core, customerportal, inventory, payroll, rbac, services, sessions, vendors
+Running migrations:
+Traceback (most 
+recent call last):
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\utils.py", 
+line 105, in _execute
+    return self.curso
+r.execute(sql, 
+params)
+           ~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\mysql\base.py",
+ line 76, in execute
+    return self.curso
+r.execute(query, 
+args)
+           ~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\curso
+rs.py", line 153, in 
+execute
+    result = 
+self._query(query)
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\curso
+rs.py", line 322, in 
+_query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+575, in query
+    
+self._affected_rows 
+= self._read_query_re
+sult(unbuffered=unbuf
+fered)
+                     
+     ~~~~~~~~~~~~~~~~
+~~~~~~~^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+826, in 
+_read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+1203, in read
+    first_packet = se
+lf.connection._read_p
+acket()
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+782, in _read_packet
+    packet.raise_for_
+error()
+    ~~~~~~~~~~~~~~~~~
+~~~~~^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\proto
+col.py", line 219, 
+in raise_for_error
+    err.raise_mysql_e
+xception(self._data)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\err.p
+y", line 150, in 
+raise_mysql_exception
+    raise 
+errorclass(errno, 
+errval)
+pymysql.err.Programmi
+ngError: (1146, 
+"Table 'ai_accounting
+.voucher_configuratio
+ns' doesn't exist")
+
+The above exception 
+was the direct cause 
+of the following 
+exception:
+
+Traceback (most 
+recent call last):
+  File "D:\finpixe\Ai
+_Accounting_v1-3\Ai_A
+ccounting_v1\backend\
+manage.py", line 22, 
+in <module>
+    main()
+    ~~~~^^
+  File "D:\finpixe\Ai
+_Accounting_v1-3\Ai_A
+ccounting_v1\backend\
+manage.py", line 18, 
+in main
+    execute_from_comm
+and_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\core\m
+anagement\__init__.py
+", line 442, in execu
+te_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\core\m
+anagement\__init__.py
+", line 436, in 
+execute
+    self.fetch_comman
+d(subcommand).run_fro
+m_argv(self.argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\core\m
+anagement\base.py", 
+line 416, in 
+run_from_argv
+    
+self.execute(*args, 
+**cmd_options)
+    ~~~~~~~~~~~~^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\core\m
+anagement\base.py", 
+line 460, in execute
+    output = 
+self.handle(*args, 
+**options)
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\core\m
+anagement\base.py", 
+line 107, in wrapper
+    res = 
+handle_func(*args, 
+**kwargs)
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\core\m
+anagement\commands\mi
+grate.py", line 353, 
+in handle
+    
+post_migrate_state = 
+executor.migrate(
+        targets,
+    ...<3 lines>...
+        fake_initial=
+fake_initial,
+    )
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\mig
+rations\executor.py",
+ line 135, in migrate
+    state = self._mig
+rate_all_forwards(
+        state, plan, 
+full_plan, 
+fake=fake, fake_initi
+al=fake_initial
+    )
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\mig
+rations\executor.py",
+ line 167, in 
+_migrate_all_forwards
+    state = 
+self.apply_migration(
+        state, 
+migration, 
+fake=fake, fake_initi
+al=fake_initial
+    )
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\mig
+rations\executor.py",
+ line 255, in 
+apply_migration
+    state = migration
+.apply(state, 
+schema_editor)
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\mig
+rations\migration.py"
+, line 132, in apply
+    operation.databas
+e_forwards(
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~^
+        
+self.app_label, 
+schema_editor, 
+old_state, 
+project_state
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\mig
+rations\operations\mo
+dels.py", line 1015, 
+in database_forwards
+    schema_editor.rem
+ove_index(model, 
+index)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\mysql\schema.py
+", line 146, in 
+remove_index
+    super().remove_in
+dex(model, index)
+    ~~~~~~~~~~~~~~~~~
+~~~^^^^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\base\schema.py"
+, line 578, in 
+remove_index
+    self.execute(inde
+x.remove_sql(model, 
+self))
+    ~~~~~~~~~~~~^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\base\schema.py"
+, line 204, in 
+execute
+    
+cursor.execute(sql, 
+params)
+    ~~~~~~~~~~~~~~^^^
+^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\utils.py", 
+line 122, in execute
+    return 
+super().execute(sql, 
+params)
+           ~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\utils.py", 
+line 79, in execute
+    return self._exec
+ute_with_wrappers(
+           ~~~~~~~~~~
+~~~~~~~~~~~~~~~~~^
+        sql, params, 
+many=False, executor=
+self._execute
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\utils.py", 
+line 92, in _execute_
+with_wrappers
+    return 
+executor(sql, 
+params, many, 
+context)
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\utils.py", 
+line 100, in _execute
+    with self.db.wrap
+_database_errors:
+         ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\uti
+ls.py", line 91, in 
+__exit__
+    raise dj_exc_valu
+e.with_traceback(trac
+eback) from exc_value
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\utils.py", 
+line 105, in _execute
+    return self.curso
+r.execute(sql, 
+params)
+           ~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\django\db\bac
+kends\mysql\base.py",
+ line 76, in execute
+    return self.curso
+r.execute(query, 
+args)
+           ~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\curso
+rs.py", line 153, in 
+execute
+    result = 
+self._query(query)
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\curso
+rs.py", line 322, in 
+_query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+575, in query
+    
+self._affected_rows 
+= self._read_query_re
+sult(unbuffered=unbuf
+fered)
+                     
+     ~~~~~~~~~~~~~~~~
+~~~~~~~^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+826, in 
+_read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+1203, in read
+    first_packet = se
+lf.connection._read_p
+acket()
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\conne
+ctions.py", line 
+782, in _read_packet
+    packet.raise_for_
+error()
+    ~~~~~~~~~~~~~~~~~
+~~~~~^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\proto
+col.py", line 219, 
+in raise_for_error
+    err.raise_mysql_e
+xception(self._data)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Dhar
+un\AppData\Roaming\Py
+thon\Python314\site-p
+ackages\pymysql\err.p
+y", line 150, in 
+raise_mysql_exception
+    raise 
+errorclass(errno, 
+errval)
+django.db.utils.Progr
+ammingError: (1146, 
+"Table 'ai_accounting
+.voucher_configuratio
+ns' doesn't exist")
+  Applying accounting.0002_remove_voucherconfiguration_voucher_con_effecti_a6b7a2_idx_and_more...

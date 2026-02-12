@@ -1,0 +1,20 @@
+﻿CREATE TABLE `master_voucher_contra` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `tenant_id` varchar(36) NOT NULL COMMENT 'Tenant ID for multi-tenancy',
+  `voucher_name` varchar(100) NOT NULL COMMENT 'Voucher name',
+  `prefix` varchar(20) DEFAULT NULL COMMENT 'Prefix for voucher number',
+  `suffix` varchar(20) DEFAULT NULL COMMENT 'Suffix for voucher number',
+  `start_from` int DEFAULT '1' COMMENT 'Starting number',
+  `current_number` int DEFAULT '1' COMMENT 'Current number in sequence',
+  `required_digits` int DEFAULT '4' COMMENT 'Number of digits for padding',
+  `enable_auto_numbering` tinyint(1) DEFAULT '1' COMMENT 'Enable automatic numbering',
+  `include_from_existing_series` varchar(200) DEFAULT NULL COMMENT 'Include from existing series (dropdown selection)',
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updated_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `created_by` varchar(100) DEFAULT NULL,
+  `updated_by` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_tenant_contra` (`tenant_id`),
+  KEY `idx_voucher_name_contra` (`voucher_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Contra Voucher Master'

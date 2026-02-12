@@ -1,0 +1,11 @@
+﻿Existing tables:
+vendor_master_banking
+vendor_master_basicdetail
+vendor_master_category
+vendor_master_gstdetails
+vendor_master_posettings
+vendor_master_productservices
+vendor_master_tds
+vendor_master_terms
+vendor_transaction_po
+vendor_transaction_po_items

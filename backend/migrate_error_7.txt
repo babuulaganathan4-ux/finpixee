@@ -1,0 +1,408 @@
+﻿python : D:\finpixe\Ai_Accou
+nting_v1-3\Ai_Accounting_v1\
+backend\core\ai_proxy.py:11:
+ FutureWarning: 
+At line:1 char:1
++ python manage.py migrate 
+--fake-initial 2>&1 | 
+Out-File -Encoding UTF ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (D:\fi  
+  npixe\Ai_A...FutureWarn   
+ ing: :String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+
+All support for the 
+`google.generativeai` 
+package has ended. It will 
+no longer be receiving 
+updates or bug fixes. 
+Please switch to the 
+`google.genai` package as 
+soon as possible.
+See README for more details:
+
+https://github.com/google-ge
+mini/deprecated-generative-a
+i-python/blob/main/README.md
+
+  import 
+google.generativeai as genai
+[OK] Database connected successfully!
+Operations to perform:
+  Apply all migrations: accounting, admin, auth, contenttypes, core, customerportal, inventory, payroll, rbac, services, sessions, vendors
+Running migrations:
+Traceback (most recent call 
+last):
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\utils.py", line 103, 
+in _execute
+    return 
+self.cursor.execute(sql)
+           
+~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\mysql\base.py", line 
+76, in execute
+    return 
+self.cursor.execute(query, 
+args)
+           ~~~~~~~~~~~~~~~~~
+~~^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\curso
+rs.py", line 153, in execute
+    result = 
+self._query(query)
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\curso
+rs.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 575, in 
+query
+    self._affected_rows = se
+lf._read_query_result(unbuff
+ered=unbuffered)
+                          ~~
+~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 826, in 
+_read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 1203, in 
+read
+    first_packet = self.conn
+ection._read_packet()
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 782, in 
+_read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\proto
+col.py", line 219, in 
+raise_for_error
+    err.raise_mysql_exceptio
+n(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+~^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\err.p
+y", line 150, in 
+raise_mysql_exception
+    raise errorclass(errno, 
+errval)
+pymysql.err.OperationalError
+: (1050, "Table 
+'vendor_master_basicdetail' 
+already exists")
+
+The above exception was the 
+direct cause of the 
+following exception:
+
+Traceback (most recent call 
+last):
+  File "D:\finpixe\Ai_Accoun
+ting_v1-3\Ai_Accounting_v1\b
+ackend\manage.py", line 22, 
+in <module>
+    main()
+    ~~~~^^
+  File "D:\finpixe\Ai_Accoun
+ting_v1-3\Ai_Accounting_v1\b
+ackend\manage.py", line 18, 
+in main
+    execute_from_command_lin
+e(sys.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+~^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\core\m
+anagement\__init__.py", 
+line 442, in 
+execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\core\m
+anagement\__init__.py", 
+line 436, in execute
+    self.fetch_command(subco
+mmand).run_from_argv(self.ar
+gv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\core\m
+anagement\base.py", line 
+416, in run_from_argv
+    self.execute(*args, 
+**cmd_options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\core\m
+anagement\base.py", line 
+460, in execute
+    output = 
+self.handle(*args, 
+**options)
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\core\m
+anagement\base.py", line 
+107, in wrapper
+    res = 
+handle_func(*args, **kwargs)
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\core\m
+anagement\commands\migrate.p
+y", line 353, in handle
+    post_migrate_state = 
+executor.migrate(
+        targets,
+    ...<3 lines>...
+        
+fake_initial=fake_initial,
+    )
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\mig
+rations\executor.py", line 
+135, in migrate
+    state = 
+self._migrate_all_forwards(
+        state, plan, 
+full_plan, fake=fake, 
+fake_initial=fake_initial
+    )
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\mig
+rations\executor.py", line 
+167, in 
+_migrate_all_forwards
+    state = 
+self.apply_migration(
+        state, migration, 
+fake=fake, 
+fake_initial=fake_initial
+    )
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\mig
+rations\executor.py", line 
+255, in apply_migration
+    state = 
+migration.apply(state, 
+schema_editor)
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\mig
+rations\migration.py", line 
+132, in apply
+    
+operation.database_forwards(
+    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.app_label, 
+schema_editor, old_state, 
+project_state
+        ^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^
+    )
+    ^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\mig
+rations\operations\models.py
+", line 97, in 
+database_forwards
+    schema_editor.create_mod
+el(model)
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+~~^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\base\schema.py", line 
+512, in create_model
+    self.execute(sql, 
+params or None)
+    ~~~~~~~~~~~~^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\base\schema.py", line 
+204, in execute
+    cursor.execute(sql, 
+params)
+    
+~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\utils.py", line 122, 
+in execute
+    return 
+super().execute(sql, params)
+           
+~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\utils.py", line 79, 
+in execute
+    return 
+self._execute_with_wrappers(
+           
+~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, 
+many=False, 
+executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\utils.py", line 92, 
+in _execute_with_wrappers
+    return executor(sql, 
+params, many, context)
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\utils.py", line 100, 
+in _execute
+    with self.db.wrap_databa
+se_errors:
+         
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\uti
+ls.py", line 91, in __exit__
+    raise dj_exc_value.with_
+traceback(traceback) from 
+exc_value
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\utils.py", line 103, 
+in _execute
+    return 
+self.cursor.execute(sql)
+           
+~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\django\db\bac
+kends\mysql\base.py", line 
+76, in execute
+    return 
+self.cursor.execute(query, 
+args)
+           ~~~~~~~~~~~~~~~~~
+~~^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\curso
+rs.py", line 153, in execute
+    result = 
+self._query(query)
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\curso
+rs.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 575, in 
+query
+    self._affected_rows = se
+lf._read_query_result(unbuff
+ered=unbuffered)
+                          ~~
+~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 826, in 
+_read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 1203, in 
+read
+    first_packet = self.conn
+ection._read_packet()
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\conne
+ctions.py", line 782, in 
+_read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\proto
+col.py", line 219, in 
+raise_for_error
+    err.raise_mysql_exceptio
+n(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+~^^^^^^^^^^^^
+  File "C:\Users\Dharun\AppD
+ata\Roaming\Python\Python314
+\site-packages\pymysql\err.p
+y", line 150, in 
+raise_mysql_exception
+    raise errorclass(errno, 
+errval)
+django.db.utils.OperationalE
+rror: (1050, "Table 
+'vendor_master_basicdetail' 
+already exists")
+  Applying vendors.0001_initial...

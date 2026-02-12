@@ -1,0 +1,236 @@
+﻿python : D:\finpixe\Ai_Acc
+ounting_v1-3\Ai_Accounting
+_v1\backend\core\ai_proxy.
+py:11: FutureWarning: 
+At line:1 char:1
++ python manage.py 
+migrate 2>&1 | Out-File 
+-Encoding UTF8 
+migrate_error ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo        
+      : NotSpecified: (D  
+  :\finpixe\Ai_A...Futu   
+ reWarning: :String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+All support for the 
+`google.generativeai` 
+package has ended. It 
+will no longer be 
+receiving 
+updates or bug fixes. 
+Please switch to the 
+`google.genai` package as 
+soon as possible.
+See README for more 
+details:
+
+https://github.com/google-
+gemini/deprecated-generati
+ve-ai-python/blob/main/REA
+DME.md
+
+  import 
+google.generativeai as 
+genai
+[OK] Database connected successfully!
+Operations to perform:
+  Apply all migrations: accounting, admin, auth, contenttypes, core, customerportal, inventory, payroll, rbac, services, sessions, vendors
+Running migrations:
+Traceback (most recent 
+call last):
+  File "D:\finpixe\Ai_Acco
+unting_v1-3\Ai_Accounting_
+v1\backend\manage.py", 
+line 22, in <module>
+    main()
+    ~~~~^^
+  File "D:\finpixe\Ai_Acco
+unting_v1-3\Ai_Accounting_
+v1\backend\manage.py", 
+line 18, in main
+    execute_from_command_l
+ine(sys.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~
+~~~^^^^^^^^^^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+core\management\__init__.p
+y", line 442, in 
+execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+core\management\__init__.p
+y", line 436, in execute
+    self.fetch_command(sub
+command).run_from_argv(sel
+f.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~^^^^
+^^^^^^^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+core\management\base.py", 
+line 416, in run_from_argv
+    self.execute(*args, 
+**cmd_options)
+    ~~~~~~~~~~~~^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+core\management\base.py", 
+line 460, in execute
+    output = 
+self.handle(*args, 
+**options)
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+core\management\base.py", 
+line 107, in wrapper
+    res = 
+handle_func(*args, 
+**kwargs)
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+core\management\commands\m
+igrate.py", line 353, in 
+handle
+    post_migrate_state = 
+executor.migrate(
+        targets,
+    ...<3 lines>...
+        
+fake_initial=fake_initial,
+    )
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\migrations\executor.py"
+, line 135, in migrate
+    state = self._migrate_
+all_forwards(
+        state, plan, 
+full_plan, fake=fake, 
+fake_initial=fake_initial
+    )
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\migrations\executor.py"
+, line 167, in 
+_migrate_all_forwards
+    state = 
+self.apply_migration(
+        state, migration, 
+fake=fake, 
+fake_initial=fake_initial
+    )
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\migrations\executor.py"
+, line 255, in 
+apply_migration
+    state = 
+migration.apply(state, 
+schema_editor)
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\migrations\migration.py
+", line 132, in apply
+    operation.database_for
+wards(
+    ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~^
+        self.app_label, 
+schema_editor, old_state, 
+project_state
+        ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\migrations\operations\m
+odels.py", line 717, in 
+database_forwards
+    alter_together(
+    ~~~~~~~~~~~~~~^
+        new_model,
+        ^^^^^^^^^^
+        from_model_state.o
+ptions.get(self.option_nam
+e) or set(),
+        ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+        to_model_state.opt
+ions.get(self.option_name)
+ or set(),
+        ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\backends\base\schema.py
+", line 614, in 
+alter_unique_together
+    self._delete_composed_
+index(
+    ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~^
+        model,
+        ^^^^^^
+    ...<2 lines>...
+        
+self.sql_delete_unique,
+        
+^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\backends\mysql\schema.p
+y", line 218, in 
+_delete_composed_index
+    return super()._delete
+_composed_index(model, 
+fields, *args)
+           ~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^
+  File "C:\Users\Dharun\Ap
+pData\Roaming\Python\Pytho
+n314\site-packages\django\
+db\backends\base\schema.py
+", line 670, in 
+_delete_composed_index
+    raise ValueError(
+    ...<6 lines>...
+    )
+ValueError: Found wrong 
+number (0) of constraints 
+for users(username, 
+tenant_id)
+  Applying core.0002_allow_duplicate_usernames_unique_email...

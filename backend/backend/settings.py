@@ -83,7 +83,8 @@ DATABASES = {
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '3306'),
         # PRODUCTION: Persistent connections to reduce handshake overhead
-        'CONN_MAX_AGE': int(os.getenv('DB_CONN_MAX_AGE', '1200')),  # 20 minutes
+        # Temporarily set to 0 to prevent connection exhaustion during development
+        'CONN_MAX_AGE': 0,  # Close connections immediately after each request
         'CONN_HEALTH_CHECKS': True,  # Test connections before use to prevent crashes
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES', INTERACTIVE_TIMEOUT=1200, WAIT_TIMEOUT=1200",
