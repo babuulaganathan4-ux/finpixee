@@ -505,7 +505,9 @@ const CustomerContent: React.FC = () => {
             const response = await httpClient.get<any[]>('/api/inventory/items/');
             setStockItems(response.map(item => ({
                 code: item.item_code,
-                name: item.item_name
+                name: item.item_name,
+                uom: item.uom,
+                alternate_uom: item.alternate_uom
             })));
         } catch (error) {
             console.error('Error fetching stock items:', error);
@@ -599,6 +601,15 @@ const CustomerContent: React.FC = () => {
         tdsSection: '',
         tdsEnabled: false
     });
+
+    const uniqueUOMs = useMemo(() => {
+        const uoms = new Set<string>();
+        stockItems.forEach(item => {
+            if (item.uom) uoms.add(item.uom);
+            if (item.alternate_uom) uoms.add(item.alternate_uom);
+        });
+        return Array.from(uoms).sort();
+    }, [stockItems]);
 
     // TDS Sections Data
     const tdsSections = [
@@ -875,7 +886,31 @@ const CustomerContent: React.FC = () => {
                 const updatedRow = { ...row, [field]: value };
                 if (field === 'itemCode') {
                     const item = stockItems.find(i => i.code === value);
-                    updatedRow.itemName = item ? item.name : 'Auto-fetched';
+                    updatedRow.itemName = item ? item.name : '';
+                    updatedRow.uom = item ? item.uom : ''; // Default to main unit
+                } else if (field === 'itemName') {
+                    const item = stockItems.find(i => i.name === value);
+                    updatedRow.itemCode = item ? item.code : '';
+                    updatedRow.uom = item ? item.uom : ''; // Default to main unit
+                } else if (field === 'uom') {
+                    // Reverse lookup/validation logic
+                    const matchingItems = stockItems.filter(i => i.uom === value || i.alternate_uom === value);
+
+                    if (matchingItems.length === 1) {
+                        // Unique match - auto select
+                        updatedRow.itemCode = matchingItems[0].code;
+                        updatedRow.itemName = matchingItems[0].name;
+                    } else if (updatedRow.itemCode) {
+                        // multiple matches or no matches
+                        // check if current item is valid for this uom
+                        const currentItem = stockItems.find(i => i.code === updatedRow.itemCode);
+                        const isValid = currentItem && (currentItem.uom === value || currentItem.alternate_uom === value);
+                        if (!isValid) {
+                            // Clear item if invalid for new UOM
+                            updatedRow.itemCode = '';
+                            updatedRow.itemName = '';
+                        }
+                    }
                 }
                 return updatedRow;
             }
@@ -1131,14 +1166,27 @@ const CustomerContent: React.FC = () => {
     };
 
     const filteredCustomers = (customers || []).filter(customer => {
-        const name = customer.customer_name || customer.name || '';
-        const code = customer.customer_code || customer.code || '';
-        const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            code.toLowerCase().includes(searchTerm.toLowerCase());
+        const name = (customer.customer_name || customer.name || '').toLowerCase();
+        const code = (customer.customer_code || customer.code || '').toLowerCase();
+        const search = searchTerm.toLowerCase();
+
+        const matchesSearch = name.includes(search) || code.includes(search);
         const matchesStatus = statusFilter === 'All Status' || (customer.status || 'Live') === statusFilter;
 
-        // Category matching - handle both mock and real customer structures
-        const customerCategory = customer.customer_category_name || customer.category || '';
+        // Category matching - resolve full path from ID
+        let customerCategory = '';
+        if (customer.customer_category) {
+            const cat = categories.find(c => c.id === customer.customer_category);
+            if (cat) {
+                customerCategory = cat.full_path || cat.category;
+            } else {
+                // Fallback to name if ID lookup fails
+                customerCategory = customer.customer_category_name || customer.category || '';
+            }
+        } else {
+            customerCategory = customer.customer_category_name || customer.category || '';
+        }
+
         const matchesCategory = categoryFilter === 'All Categories' || customerCategory === categoryFilter;
 
         return matchesSearch && matchesStatus && matchesCategory;
@@ -1761,7 +1809,6 @@ const CustomerContent: React.FC = () => {
                                 <div className="col-span-1">UOM</div>
                                 <div className="col-span-2">Customer Item Code</div>
                                 <div className="col-span-2">Customer Item Name</div>
-                                <div className="col-span-1">Customer UOM</div>
                                 <div className="col-span-1 text-center">Action</div>
                             </div>
 
@@ -1777,34 +1824,45 @@ const CustomerContent: React.FC = () => {
                                                 onChange={(e) => handleProductRowChange(row.id, 'itemCode', e.target.value)}
                                             >
                                                 <option value="">Select Item</option>
-                                                {stockItems.map(item => (
-                                                    <option key={item.code} value={item.code}>{item.code} - {item.name}</option>
+                                                {stockItems
+                                                    .filter(item => !row.uom || item.uom === row.uom || item.alternate_uom === row.uom)
+                                                    .map(item => (
+                                                        <option key={item.code} value={item.code}>{item.code} - {item.name}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className="col-span-2">
+                                            <select
+                                                className="w-full px-3 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white"
+                                                value={row.itemName}
+                                                onChange={(e) => handleProductRowChange(row.id, 'itemName', e.target.value)}
+                                            >
+                                                <option value="">Select Item Name</option>
+                                                {stockItems
+                                                    .filter(item => !row.uom || item.uom === row.uom || item.alternate_uom === row.uom)
+                                                    .map(item => (
+                                                        <option key={item.code} value={item.name}>{item.name}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className="col-span-1">
+                                            <select
+                                                className="w-full px-3 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white"
+                                                value={(row as any).uom || ''}
+                                                onChange={(e) => handleProductRowChange(row.id, 'uom', e.target.value)}
+                                            >
+                                                <option value="">Select UOM</option>
+                                                {uniqueUOMs.map(unit => (
+                                                    <option key={unit} value={unit}>{unit}</option>
                                                 ))}
                                             </select>
                                         </div>
                                         <div className="col-span-2">
                                             <input
                                                 type="text"
-                                                readOnly
-                                                className="w-full px-3 py-2 border border-gray-200 rounded-[4px] bg-gray-100 text-gray-500 text-sm cursor-not-allowed"
-                                                placeholder="Auto-fetched"
-                                                value={row.itemName}
-                                            />
-                                        </div>
-                                        <div className="col-span-1">
-                                            <input
-                                                type="text"
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                                                placeholder="UOM"
-                                                value={(row as any).uom || ''}
-                                                onChange={(e) => handleProductRowChange(row.id, 'uom', e.target.value)}
-                                            />
-                                        </div>
-                                        <div className="col-span-2">
-                                            <input
-                                                type="text"
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                                                placeholder="Optional"
                                                 value={row.custItemCode}
                                                 onChange={(e) => handleProductRowChange(row.id, 'custItemCode', e.target.value)}
                                             />
@@ -1813,18 +1871,8 @@ const CustomerContent: React.FC = () => {
                                             <input
                                                 type="text"
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                                                placeholder="Optional"
                                                 value={row.custItemName}
                                                 onChange={(e) => handleProductRowChange(row.id, 'custItemName', e.target.value)}
-                                            />
-                                        </div>
-                                        <div className="col-span-1">
-                                            <input
-                                                type="text"
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                                                placeholder="UOM"
-                                                value={(row as any).custUom || ''}
-                                                onChange={(e) => handleProductRowChange(row.id, 'custUom', e.target.value)}
                                             />
                                         </div>
                                         <div className="col-span-1 flex justify-center">
@@ -2271,9 +2319,9 @@ const CustomerContent: React.FC = () => {
                                             </div>
                                         </div>
 
-                                        {/* Associate to Vendor Branch - Multi-select Dropdown with Display Field */}
+                                        {/* Associate to Customer Branch - Multi-select Dropdown with Display Field */}
                                         <div className="mb-2">
-                                            <label className="block text-xs font-medium text-gray-500 mb-1">Associate to Vendor Branch</label>
+                                            <label className="block text-xs font-medium text-gray-500 mb-1">Associate to Customer Branch</label>
                                             <div className="grid grid-cols-2 gap-4">
                                                 {/* Multi-select Dropdown */}
                                                 <div className="relative branch-dropdown-container">
@@ -2463,11 +2511,11 @@ const CustomerContent: React.FC = () => {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Dispute and Redressal Terms</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-2">Dispute Redressal Terms</label>
                             <textarea
                                 rows={3}
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm placeholder-gray-400"
-                                placeholder="Enter dispute and redressal terms"
+                                placeholder="Enter dispute redressal terms"
                                 value={termsDetails.disputeTerms}
                                 onChange={(e) => setTermsDetails({ ...termsDetails, disputeTerms: e.target.value })}
                             />
@@ -2566,9 +2614,11 @@ const CustomerContent: React.FC = () => {
                         onChange={(e) => setCategoryFilter(e.target.value)}
                     >
                         <option>All Categories</option>
-                        <option>Retail</option>
-                        <option>Wholesale</option>
-                        <option>Corporate</option>
+                        {categories.map((cat) => (
+                            <option key={cat.id} value={cat.full_path || cat.category}>
+                                {cat.full_path || cat.category}
+                            </option>
+                        ))}
                     </select>
                 </div>
             </div>
@@ -3606,7 +3656,7 @@ const LongTermContractsContent: React.FC = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-semibold text-gray-700 mb-1">Dispute & Redressal Terms</label>
+                                    <label className="block text-xs font-semibold text-gray-700 mb-1">Dispute Redressal Terms</label>
                                     <textarea
                                         rows={4}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-[4px] focus:ring-indigo-500 focus:border-indigo-500 text-sm placeholder-gray-400 resize-none"
