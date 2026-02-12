@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  /* Global Font Application - Outfit for Premium Enterprise ERP */
+  html {
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-700 antialiased;
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Root container */
+  #root {
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  /* Ensure all elements inherit the font */
+  *,
+  *::before,
+  *::after {
+    font-family: inherit !important;
+  }
+
+  /* Explicit font for all interactive elements */
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  a,
+  span,
+  div,
+  p,
+  table,
+  th,
+  td {
+    font-family: inherit;
+  }
+
+  /* Enterprise-Grade Headings - Premium Uppercase Style */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-slate-900 uppercase tracking-wider;
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 18px;
+    line-height: 28px;
+    @apply tracking-[0.1em];
+  }
+
+  h2 {
+    font-size: 16px;
+    line-height: 24px;
+    @apply tracking-[0.05em];
+  }
+
+  h3 {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  /* Small text - labels, helper text */
+  small,
+  .text-xs,
+  .text-sm {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* Button text - Premium Style */
+  button {
+    font-size: 13px;
+    @apply font-semibold uppercase tracking-wider;
+  }
+
+  /* Input and form elements */
+  input,
+  select,
+  textarea {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* Labels - Premium Style */
+  label {
+    @apply text-[11px] font-bold text-slate-500 uppercase tracking-widest;
+  }
+
+  /* Navigation and tabs */
+  nav,
+  ul,
+  li {
+    font-family: inherit;
+  }
+
+  /* All text elements */
+  strong,
+  b,
+  em,
+  i,
+  small,
+  mark,
+  del,
+  ins,
+  sub,
+  sup {
+    font-family: inherit;
+  }
+}
+
+@layer components {
+
+  /* Modern Enterprise SaaS Components */
+  .erp-card {
+    @apply bg-white border border-slate-300 rounded-[8px] shadow-sm hover:border-slate-400 hover:shadow-md transition-all duration-300;
+  }
+
+  .erp-input {
+    @apply h-[40px] px-4 bg-white border border-slate-200 rounded text-sm text-slate-900 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all placeholder:text-slate-400 font-medium;
+  }
+
+  .erp-label {
+    @apply block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2;
+  }
+
+  .erp-button-primary {
+    @apply h-[40px] px-6 bg-indigo-600 text-white font-bold rounded uppercase tracking-wider hover:bg-indigo-700 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-indigo-600/20;
+  }
+
+  .erp-button-secondary {
+    @apply h-[40px] px-6 bg-white border border-slate-200 text-slate-700 font-bold rounded uppercase tracking-wider hover:bg-slate-50 active:scale-[0.98] transition-all;
+  }
+
+  .erp-table-container {
+    @apply erp-card overflow-hidden;
+  }
+
+  .erp-table {
+    @apply w-full text-sm border-collapse;
+  }
+
+  .erp-table th {
+    @apply px-4 py-3 bg-slate-50 border-b border-slate-200 text-left text-[11px] font-bold text-slate-500 uppercase tracking-widest;
+  }
+
+  .erp-table td {
+    @apply px-4 py-3.5 border-b border-slate-100 text-slate-700 font-medium;
+  }
+
+  .erp-table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .erp-table tr:hover td {
+    @apply bg-slate-50/50;
+  }
+
+  /* KPI Cards */
+  .erp-kpi-card {
+    @apply p-6 erp-card flex flex-col gap-2 relative overflow-hidden;
+  }
+
+  .erp-kpi-label {
+    @apply text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em];
+  }
+
+  .erp-kpi-value {
+    @apply text-2xl font-bold text-slate-800 tracking-tight;
+  }
+}
+
+/* Custom scrollbar for modern SaaS feel */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+}
+
+/* Force Outfit font on absolutely everything */
+@layer utilities {
+  * {
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  }
+}
+
+/* DARK MODE OVERRIDES */
+/* These overrides allow dark mode to work without refactoring the entire codebase to use dark: prefixes */
+
+/* Base overrides */
+.dark html {
+  color-scheme: dark;
+}
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
+}
+
+.dark #root {
+  @apply bg-slate-950 text-slate-100;
+}
+
+/* Common Backgrounds */
+.dark .bg-white {
+  background-color: #0f172a !important;
+  /* slate-900 - Cards/Containers */
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-50\/80,
+.dark .bg-slate-50\/30 {
+  background-color: #020617 !important;
+  /* slate-950 - Main Backgrounds */
+}
+
+.dark .bg-gray-50 {
+  background-color: #020617 !important;
+  /* slate-950 */
+}
+
+/* Common Text Colors */
+.dark .text-slate-900,
+.dark .text-gray-900 {
+  color: #f1f5f9 !important;
+  /* slate-100 */
+}
+
+.dark .text-slate-800,
+.dark .text-gray-800 {
+  color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+.dark .text-slate-700,
+.dark .text-gray-700 {
+  color: #cbd5e1 !important;
+  /* slate-300 */
+}
+
+.dark .text-slate-600,
+.dark .text-gray-600 {
+  color: #94a3b8 !important;
+  /* slate-400 */
+}
+
+.dark .text-slate-500,
+.dark .text-gray-500 {
+  color: #64748b !important;
+  /* slate-500 */
+}
+
+/* Common Borders */
+.dark .border-slate-200,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: #1e293b !important;
+  /* slate-800 */
+}
+
+.dark .border-slate-100,
+.dark .border-gray-100 {
+  border-color: #0f172a !important;
+  /* slate-900 */
+}
+
+.dark .divide-slate-200> :not([hidden])~ :not([hidden]),
+.dark .divide-gray-200> :not([hidden])~ :not([hidden]) {
+  border-color: #1e293b !important;
+  /* slate-800 */
+}
+
+/* Component Specific Overrides */
+.dark .erp-card {
+  @apply bg-slate-900 border-slate-800;
+}
+
+.dark .erp-input {
+  @apply bg-slate-950 border-slate-800 text-slate-100 placeholder:text-slate-600 focus:border-indigo-500 focus:ring-indigo-500/20;
+}
+
+.dark .erp-label {
+  @apply text-slate-400;
+}
+
+.dark .erp-button-secondary {
+  @apply bg-slate-900 border-slate-700 text-slate-300 hover:bg-slate-800;
+}
+
+.dark .erp-table th {
+  @apply bg-slate-900 border-slate-800 text-slate-400;
+}
+
+.dark .erp-table td {
+  @apply border-slate-800 text-slate-300;
+}
+
+.dark .erp-table tr:hover td {
+  background-color: #1e293b !important;
+  /* slate-800 */
+}
+
+/* Global Input Overrides for Dark Mode */
+.dark input,
+.dark select,
+.dark textarea {
+  @apply bg-slate-950 border-slate-700 text-slate-100;
+}
+
+/* Fix for date inputs in dark mode */
+.dark ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Scrollbar dark mode */
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 hover:bg-slate-600;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-slate-950;
+}
+
+/* Input Styles */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Navigation items active state overrides */
+.dark .text-indigo-600 {
+  color: #818cf8 !important;
+  /* indigo-400 */
+}
+
+.dark .bg-indigo-600 {
+  background-color: #6366f1 !important;
+  /* indigo-500 */
+}
+
+.dark .bg-indigo-50 {
+  background-color: #1e1b4b !important;
+  /* indigo-950 */
+}
+
+.dark .text-indigo-700 {
+  color: #a5b4fc !important;
+  /* indigo-300 */
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: #1e293b !important;
+  /* slate-800 */
+}
+
+.dark .hover\:bg-white:hover {
+  background-color: #1e293b !important;
+  /* slate-800 */
+}
+
+/* Fix for Chrome/Edge Autofill in Dark Mode */
+/* Fix for Chrome/Edge Autofill in Dark Mode */
+html.dark input:-webkit-autofill,
+html.dark input:-webkit-autofill:hover,
+html.dark input:-webkit-autofill:focus,
+html.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 999px #0f172a inset !important;
+  /* matches slate-900 */
+  -webkit-text-fill-color: #f1f5f9 !important;
+  /* matches slate-100 */
+  caret-color: #f1f5f9 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/* Dashboard Grid Pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(circle, #334155 1px, transparent 1px);
+  /* slate-700 dots */
+}
